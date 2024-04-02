@@ -1,13 +1,5 @@
-import {
-  ApplicationConfig,
-  InjectionToken,
-  importProvidersFrom,
-} from '@angular/core';
-import { provideRouter } from '@angular/router';
-import { appRoutes } from './app.routes';
-import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import { connectAuthEmulator, getAuth, provideAuth } from '@angular/fire/auth';
-=======
+import { InjectionToken } from '@angular/core';
+import { connectAuthEmulator } from '@angular/fire/auth';
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { appRoutes } from './app.routes';
@@ -45,7 +37,8 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(providePerformance(() => getPerformance())),
     importProvidersFrom(provideStorage(() => getStorage())),
 
-    importProvidersFrom(provideRemoteConfig(() => getRemoteConfig())), provideAnimationsAsync(),
+    importProvidersFrom(provideRemoteConfig(() => getRemoteConfig())),
+    provideAnimationsAsync(),
     importProvidersFrom(provideRemoteConfig(() => getRemoteConfig())),
   ],
 };
