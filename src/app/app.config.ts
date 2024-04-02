@@ -7,6 +7,12 @@ import { provideRouter } from '@angular/router';
 import { appRoutes } from './app.routes';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { connectAuthEmulator, getAuth, provideAuth } from '@angular/fire/auth';
+=======
+import { ApplicationConfig, importProvidersFrom } from '@angular/core';
+import { provideRouter } from '@angular/router';
+import { appRoutes } from './app.routes';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getAuth, provideAuth } from '@angular/fire/auth';
 import {
   getAnalytics,
   provideAnalytics,
@@ -38,7 +44,9 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(provideDatabase(() => getDatabase())),
     importProvidersFrom(providePerformance(() => getPerformance())),
     importProvidersFrom(provideStorage(() => getStorage())),
+
     importProvidersFrom(provideRemoteConfig(() => getRemoteConfig())), provideAnimationsAsync(),
+    importProvidersFrom(provideRemoteConfig(() => getRemoteConfig())),
   ],
 };
 
