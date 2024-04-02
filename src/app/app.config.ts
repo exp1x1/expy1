@@ -1,8 +1,12 @@
-import { ApplicationConfig, importProvidersFrom } from '@angular/core';
+import {
+  ApplicationConfig,
+  InjectionToken,
+  importProvidersFrom,
+} from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { appRoutes } from './app.routes';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import { getAuth, provideAuth } from '@angular/fire/auth';
+import { connectAuthEmulator, getAuth, provideAuth } from '@angular/fire/auth';
 import {
   getAnalytics,
   provideAnalytics,
@@ -18,6 +22,7 @@ import {
   provideRemoteConfig,
 } from '@angular/fire/remote-config';
 import { environment } from 'src/environments/environment';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -33,6 +38,19 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(provideDatabase(() => getDatabase())),
     importProvidersFrom(providePerformance(() => getPerformance())),
     importProvidersFrom(provideStorage(() => getStorage())),
-    importProvidersFrom(provideRemoteConfig(() => getRemoteConfig())),
+    importProvidersFrom(provideRemoteConfig(() => getRemoteConfig())), provideAnimationsAsync(),
   ],
 };
+
+export const AUTH = new InjectionToken('Firebase auth', {
+  providedIn: 'root',
+  factory: () => {
+    const auth = getAuth();
+    if (environment.useEmulators) {
+      connectAuthEmulator(auth, 'http://localhost:9099', {
+        disableWarnings: true,
+      });
+    }
+    return auth;
+  },
+});
