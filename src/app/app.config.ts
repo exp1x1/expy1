@@ -1,5 +1,3 @@
-import { InjectionToken } from '@angular/core';
-import { connectAuthEmulator } from '@angular/fire/auth';
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { appRoutes } from './app.routes';
@@ -42,16 +40,3 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(provideRemoteConfig(() => getRemoteConfig())),
   ],
 };
-
-export const AUTH = new InjectionToken('Firebase auth', {
-  providedIn: 'root',
-  factory: () => {
-    const auth = getAuth();
-    if (environment.useEmulators) {
-      connectAuthEmulator(auth, 'http://localhost:9099', {
-        disableWarnings: true,
-      });
-    }
-    return auth;
-  },
-});
