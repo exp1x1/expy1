@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "expy-9e26f": {
+      "hosting": {
+        "expy": [
+          "expy-9e26f"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "expy-9e26f"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "expy",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}
