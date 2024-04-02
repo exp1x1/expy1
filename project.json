@@ -8,16 +8,25 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/expy",
         "index": "./src/index.html",
         "main": "./src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [
+          "zone.js"
+        ],
         "tsConfig": "./tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": ["./src/favicon.ico", "./src/assets"],
-        "styles": ["./src/styles.scss"],
+        "assets": [
+          "./src/favicon.ico",
+          "./src/assets"
+        ],
+        "styles": [
+          "./src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -42,7 +51,13 @@
           "vendorChunk": true,
           "extractLicenses": false,
           "sourceMap": true,
-          "namedChunks": true
+          "namedChunks": true,
+          "fileReplacements": [
+            {
+              "replace": "src/environments/environment.ts",
+              "with": "src/environments/environment.development.ts"
+            }
+          ]
         }
       },
       "defaultConfiguration": "production"
@@ -68,15 +83,36 @@
     "lint": {
       "executor": "@nx/eslint:lint",
       "options": {
-        "lintFilePatterns": ["./src"]
+        "lintFilePatterns": [
+          "./src"
+        ]
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectName}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectName}"
+      ],
       "options": {
         "jestConfig": "jest.config.ts"
       }
+    },
+    "deploy": {
+      "executor": "@angular/fire:deploy",
+      "options": {
+        "version": 2
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "expy:build:production",
+          "serveTarget": "expy:serve:production"
+        },
+        "development": {
+          "buildTarget": "expy:build:development",
+          "serveTarget": "expy:serve:development"
+        }
+      },
+      "defaultConfiguration": "production"
     }
   }
 }
