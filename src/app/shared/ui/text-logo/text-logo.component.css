@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Tac+One&display=swap');
+
+.first {
+  font-family: 'Tac One', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.sec {
+  font-family: 'Pacifico', cursive;
+  font-weight: 400;
+  font-style: normal;
+  color: #ff4886;
+}
+
+span {
+  font-size: 100%;
+}

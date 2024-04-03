@@ -1,1 +1,7 @@
-<p>dashboard works!</p>
+<app-navbar></app-navbar>
+<app-item-display [itemData]="itemData$.items()"></app-item-display>
+<div class="add_btn">
+  <button mat-raised-button color="accent" (click)="openDialog()">
+    Add Item
+  </button>
+</div>

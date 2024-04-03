@@ -1,0 +1,43 @@
+<h2 mat-dialog-title class="center">Add Item</h2>
+<mat-dialog-content [formGroup]="itemForm" class="container">
+  <mat-form-field>
+    <mat-label>Item Name</mat-label>
+    <input matInput formControlName="name" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Choose a Purchase date</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="purchase_date" />
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Choose a Expiry date</mat-label>
+    <input matInput [matDatepicker]="picker1" formControlName="exp_date" />
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle
+      matIconSuffix
+      [for]="picker1"
+    ></mat-datepicker-toggle>
+    <mat-datepicker #picker1></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Item Description</mat-label>
+    <textarea matInput formControlName="disc"></textarea>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions class="center">
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button
+    mat-button
+    color="accent"
+    cdkFocusInitial
+    [disabled]="itemForm.invalid"
+    (click)="onUpdate()"
+  >
+    Add
+  </button>
+</mat-dialog-actions>

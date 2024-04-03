@@ -37,6 +37,6 @@ export const appConfig: ApplicationConfig = {
 
     importProvidersFrom(provideRemoteConfig(() => getRemoteConfig())),
     provideAnimationsAsync(),
-    importProvidersFrom(provideRemoteConfig(() => getRemoteConfig())),
+    importProvidersFrom(provideRemoteConfig(() => getRemoteConfig())), provideAnimationsAsync(),
   ],
 };
