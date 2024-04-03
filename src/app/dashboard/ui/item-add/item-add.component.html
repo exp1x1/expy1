@@ -8,7 +8,6 @@
   <mat-form-field>
     <mat-label>Choose a Purchase date</mat-label>
     <input matInput [matDatepicker]="picker" formControlName="purchase_date" />
-    <mat-hint>MM/DD/YYYY</mat-hint>
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
@@ -16,7 +15,6 @@
   <mat-form-field>
     <mat-label>Choose a Expiry date</mat-label>
     <input matInput [matDatepicker]="picker1" formControlName="exp_date" />
-    <mat-hint>MM/DD/YYYY</mat-hint>
     <mat-datepicker-toggle
       matIconSuffix
       [for]="picker1"
