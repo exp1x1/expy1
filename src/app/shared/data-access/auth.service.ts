@@ -56,7 +56,7 @@ export class AuthService {
     );
   }
 
-  logout() {
+  signOut() {
     signOut(this.auth);
   }
 

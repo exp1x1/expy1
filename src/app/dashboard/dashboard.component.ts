@@ -36,7 +36,7 @@ export class DashboardComponent {
   constructor(public dialog: MatDialog) {
     effect(() => {
       if (!this.authService.user()) {
-        this.router.navigate(['auth', 'login']);
+        this.router.navigate(['home']);
       }
     });
   }
