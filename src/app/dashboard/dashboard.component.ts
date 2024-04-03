@@ -42,13 +42,9 @@ export class DashboardComponent {
   }
 
   openDialog(): void {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const dialogRef = this.dialog.open(ItemAddComponent, {
       data: { itemAdd$: this.itemData$.update$ },
-    });
-
-    dialogRef.afterClosed().subscribe((result: unknown) => {
-      console.log(result);
-      console.log('The dialog was closed');
     });
   }
 }
